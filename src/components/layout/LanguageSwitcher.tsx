@@ -1,20 +1,15 @@
-import type { LanguageCode } from "@/content/site-copy";
-
-const languages: Array<{ code: LanguageCode; label: string; ariaLabel: string }> = [
-  { code: "es", label: "ES", ariaLabel: "Idioma español" },
-  { code: "en", label: "EN", ariaLabel: "Idioma inglés" },
-  { code: "de", label: "DE", ariaLabel: "Idioma alemán" },
-];
+import type { LanguageCode, LanguageSwitcherCopy } from "@/content/site-copy";
 
 type LanguageSwitcherProps = {
+  copy: LanguageSwitcherCopy;
   language: LanguageCode;
   onLanguageChange: (language: LanguageCode) => void;
 };
 
-export function LanguageSwitcher({ language, onLanguageChange }: LanguageSwitcherProps) {
+export function LanguageSwitcher({ copy, language, onLanguageChange }: LanguageSwitcherProps) {
   return (
-    <div className="pe-lang-switcher" role="group" aria-label="Selector de idioma">
-      {languages.map((entry) => (
+    <div className="pe-lang-switcher" role="group" aria-label={copy.groupLabel}>
+      {copy.options.map((entry) => (
         <button
           key={entry.code}
           type="button"

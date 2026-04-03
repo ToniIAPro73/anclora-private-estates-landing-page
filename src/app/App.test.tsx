@@ -69,6 +69,8 @@ describe("App landing home", () => {
     const englishButton = screen.getByRole("button", { name: /idioma inglés|english/i });
     const germanButton = screen.getByRole("button", { name: /idioma alemán|deutsch/i });
 
+    expect(screen.getByRole("heading", { level: 1, name: siteCopyByLanguage.es.hero.title })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: siteCopyByLanguage.es.hero.primaryCta })).toBeInTheDocument();
     expect(spanishButton).toHaveAttribute("aria-pressed", "true");
     expect(document.documentElement.lang).toBe("es");
     expect(window.localStorage.getItem("ape:language")).toBe("es");
@@ -78,11 +80,17 @@ describe("App landing home", () => {
     expect(spanishButton).toHaveAttribute("aria-pressed", "false");
     expect(document.documentElement.lang).toBe("en");
     expect(window.localStorage.getItem("ape:language")).toBe("en");
+    expect(screen.getByRole("heading", { level: 1, name: siteCopyByLanguage.en.hero.title })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: siteCopyByLanguage.en.hero.primaryCta })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { level: 1, name: siteCopyByLanguage.es.hero.title })).not.toBeInTheDocument();
 
     await user.click(germanButton);
     expect(germanButton).toHaveAttribute("aria-pressed", "true");
     expect(englishButton).toHaveAttribute("aria-pressed", "false");
     expect(document.documentElement.lang).toBe("de");
     expect(window.localStorage.getItem("ape:language")).toBe("de");
+    expect(screen.getByRole("heading", { level: 1, name: siteCopyByLanguage.de.hero.title })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: siteCopyByLanguage.de.hero.primaryCta })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { level: 1, name: siteCopyByLanguage.en.hero.title })).not.toBeInTheDocument();
   });
 });

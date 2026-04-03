@@ -42,7 +42,7 @@ export function PENavbar({ copy, language, onLanguageChange }: PENavbarProps) {
           </div>
 
           <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", justifySelf: "end" }}>
-            <LanguageSwitcher language={language} onLanguageChange={onLanguageChange} />
+            <LanguageSwitcher copy={copy.languageSwitcher} language={language} onLanguageChange={onLanguageChange} />
             <a className="pe-btn-primary" href="#propietarios" style={{ minHeight: "46px" }}>
               {copy.ctaLabel}
             </a>
