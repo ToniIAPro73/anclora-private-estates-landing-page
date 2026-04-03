@@ -1,24 +1,27 @@
 import { ExpTrustBadge } from "@/components/brand/ExpTrustBadge";
 import { SellerIntakeForm } from "@/components/forms/SellerIntakeForm";
+import type { SellerIntakeCopy } from "@/content/site-copy";
 
-export function SellerIntakeSection() {
+type SellerIntakeSectionProps = {
+  copy: SellerIntakeCopy;
+};
+
+export function SellerIntakeSection({ copy }: SellerIntakeSectionProps) {
   return (
     <section id="propietarios" className="pe-section">
       <div className="pe-container pe-split-grid" style={{ gap: "2rem" }}>
         <div>
-          <p className="pe-eyebrow">Propietarios</p>
+          <p className="pe-eyebrow">{copy.eyebrow}</p>
           <h2 className="pe-section-title" style={{ marginTop: "1rem" }}>
-            Captación selectiva para activos que necesitan más que exposición masiva.
+            {copy.title}
           </h2>
-          <p className="pe-section-copy" style={{ marginTop: "1.25rem" }}>
-            Si estás valorando vender en Palma o el suroeste de Mallorca, podemos estudiar tu activo desde la microzona, la narrativa comercial y el timing correcto, con un enfoque premium y confidencial.
-          </p>
+          <p className="pe-section-copy" style={{ marginTop: "1.25rem" }}>{copy.body}</p>
           <div style={{ marginTop: "1rem" }}>
-            <ExpTrustBadge mode="card" />
+            <ExpTrustBadge mode="card" text={copy.trustBadgeText} />
           </div>
         </div>
         <div className="pe-card" style={{ padding: "1.5rem" }}>
-          <SellerIntakeForm />
+          <SellerIntakeForm copy={copy.form} />
         </div>
       </div>
     </section>

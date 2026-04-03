@@ -1,51 +1,56 @@
-export function SellerIntakeForm() {
+import type { SellerFormCopy } from "@/content/site-copy";
+
+type SellerIntakeFormProps = {
+  copy: SellerFormCopy;
+};
+
+export function SellerIntakeForm({ copy }: SellerIntakeFormProps) {
   return (
     <form style={{ display: "grid", gap: "1rem" }}>
       <label>
-        <span className="pe-eyebrow">Nombre</span>
-        <input className="pe-input" name="name" placeholder="Tu nombre" />
+        <span className="pe-eyebrow">{copy.name}</span>
+        <input className="pe-input" name="name" placeholder={copy.placeholders.name} />
       </label>
       <label>
-        <span className="pe-eyebrow">Email</span>
-        <input className="pe-input" name="email" placeholder="nombre@dominio.com" />
+        <span className="pe-eyebrow">{copy.email}</span>
+        <input className="pe-input" name="email" placeholder={copy.placeholders.email} />
       </label>
       <label>
-        <span className="pe-eyebrow">Teléfono</span>
-        <input className="pe-input" name="phone" placeholder="+34 ..." />
+        <span className="pe-eyebrow">{copy.phone}</span>
+        <input className="pe-input" name="phone" placeholder={copy.placeholders.phone} />
       </label>
       <label>
-        <span className="pe-eyebrow">Zona del inmueble</span>
-        <input className="pe-input" name="zone" placeholder="Son Vida, Portals, Andratx..." />
+        <span className="pe-eyebrow">{copy.zone}</span>
+        <input className="pe-input" name="zone" placeholder={copy.placeholders.zone} />
       </label>
       <label>
-        <span className="pe-eyebrow">Tipo de propiedad</span>
+        <span className="pe-eyebrow">{copy.propertyType}</span>
         <select className="pe-select" name="propertyType" defaultValue="">
           <option value="" disabled>
-            Selecciona una opción
+            {copy.selectPlaceholder}
           </option>
-          <option>Villa</option>
-          <option>Ático</option>
-          <option>Apartamento premium</option>
-          <option>Finca</option>
+          {copy.propertyTypeOptions.map((option) => (
+            <option key={option}>{option}</option>
+          ))}
         </select>
       </label>
       <label>
-        <span className="pe-eyebrow">Preferencia de comercialización</span>
+        <span className="pe-eyebrow">{copy.commercialization}</span>
         <select className="pe-select" name="commercialization" defaultValue="">
           <option value="" disabled>
-            Selecciona una opción
+            {copy.selectPlaceholder}
           </option>
-          <option>Evaluación confidencial</option>
-          <option>Venta en exclusiva</option>
-          <option>Venta selectiva sin portal masivo</option>
+          {copy.commercializationOptions.map((option) => (
+            <option key={option}>{option}</option>
+          ))}
         </select>
       </label>
       <label>
-        <span className="pe-eyebrow">Mensaje</span>
-        <textarea className="pe-textarea" name="message" placeholder="Cuéntanos el contexto del activo y qué necesitas resolver." />
+        <span className="pe-eyebrow">{copy.message}</span>
+        <textarea className="pe-textarea" name="message" placeholder={copy.placeholders.message} />
       </label>
       <button className="pe-btn-primary" type="submit">
-        Solicitar evaluación confidencial
+        {copy.submitLabel}
       </button>
     </form>
   );

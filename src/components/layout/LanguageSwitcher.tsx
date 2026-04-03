@@ -1,4 +1,4 @@
-type LanguageCode = "es" | "en" | "de";
+import type { LanguageCode } from "@/content/site-copy";
 
 const languages: Array<{ code: LanguageCode; label: string; ariaLabel: string }> = [
   { code: "es", label: "ES", ariaLabel: "Idioma español" },
