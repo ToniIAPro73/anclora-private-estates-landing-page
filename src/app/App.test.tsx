@@ -1,8 +1,15 @@
+import userEvent from "@testing-library/user-event";
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
+import { beforeEach, describe, expect, test } from "vitest";
 import App from "./App";
 
 describe("App landing home", () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+    document.documentElement.lang = "";
+    document.documentElement.dataset.theme = "";
+  });
+
   test("renders the ultra premium home shell with primary navigation and critical sections", () => {
     render(<App />);
 
@@ -54,5 +61,29 @@ describe("App landing home", () => {
     expect(screen.getByRole("button", { name: /idioma español|español/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /idioma inglés|english/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /idioma alemán|deutsch/i })).toBeInTheDocument();
+  });
+
+  test("switches between es, en, and de from the header language switcher", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    expect(document.documentElement.lang).toBe("es");
+    expect(window.localStorage.getItem("ape:language")).toBe("es");
+
+    await user.click(screen.getByRole("button", { name: /idioma inglés|english/i }));
+    expect(document.documentElement.lang).toBe("en");
+    expect(window.localStorage.getItem("ape:language")).toBe("en");
+    expect(screen.getByRole("button", { name: /idioma inglés|english/i })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+
+    await user.click(screen.getByRole("button", { name: /idioma alemán|deutsch/i }));
+    expect(document.documentElement.lang).toBe("de");
+    expect(window.localStorage.getItem("ape:language")).toBe("de");
+    expect(screen.getByRole("button", { name: /idioma alemán|deutsch/i })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
   });
 });

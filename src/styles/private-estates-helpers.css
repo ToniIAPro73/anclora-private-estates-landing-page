@@ -215,6 +215,56 @@
   color: var(--pe-text);
 }
 
+.pe-lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem;
+  border-radius: var(--pe-radius-pill);
+  background: color-mix(in srgb, var(--pe-deep-surface) 76%, transparent);
+  box-shadow: inset 0 0 0 1px rgba(233, 195, 73, 0.08);
+}
+
+.pe-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.35rem;
+  min-width: 2.95rem;
+  padding-inline: 0.78rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--pe-text-soft);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform var(--pe-duration-fast) var(--pe-ease),
+    background var(--pe-duration-fast) var(--pe-ease),
+    color var(--pe-duration-fast) var(--pe-ease),
+    box-shadow var(--pe-duration-fast) var(--pe-ease);
+}
+
+.pe-lang-btn.is-active {
+  background: linear-gradient(135deg, rgba(233, 195, 73, 0.24), rgba(149, 209, 206, 0.18));
+  color: var(--pe-deep-text);
+  box-shadow:
+    0 0 0 1px rgba(233, 195, 73, 0.18),
+    0 8px 22px rgba(233, 195, 73, 0.12);
+}
+
+.pe-lang-btn:hover {
+  transform: translateY(-1px);
+  color: var(--pe-text);
+}
+
+.pe-lang-btn:focus-visible {
+  outline: 2px solid rgba(233, 195, 73, 0.55);
+  outline-offset: 2px;
+}
+
 .pe-btn-primary:hover,
 .pe-btn-secondary:hover {
   transform: translateY(-1px);

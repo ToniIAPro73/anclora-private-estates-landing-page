@@ -1,4 +1,5 @@
 import { BrandLockup } from "@/components/brand/BrandLockup";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 
 type PENavbarProps = {
   language: "es" | "en" | "de";
@@ -39,15 +40,7 @@ export function PENavbar({ language, onLanguageChange }: PENavbarProps) {
           </div>
 
           <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", justifySelf: "end" }}>
-            <button type="button" onClick={() => onLanguageChange("es")} aria-pressed={language === "es"} className="pe-btn-secondary" style={{ minHeight: "46px", paddingInline: "1rem" }}>
-              Idioma Español
-            </button>
-            <button type="button" onClick={() => onLanguageChange("en")} aria-pressed={language === "en"} className="pe-btn-secondary" style={{ minHeight: "46px", paddingInline: "1rem" }}>
-              Idioma Inglés
-            </button>
-            <button type="button" onClick={() => onLanguageChange("de")} aria-pressed={language === "de"} className="pe-btn-secondary" style={{ minHeight: "46px", paddingInline: "1rem" }}>
-              Idioma Alemán
-            </button>
+            <LanguageSwitcher language={language} onLanguageChange={onLanguageChange} />
             <a className="pe-btn-primary" href="#propietarios" style={{ minHeight: "46px" }}>
               Solicitar evaluación confidencial
             </a>
