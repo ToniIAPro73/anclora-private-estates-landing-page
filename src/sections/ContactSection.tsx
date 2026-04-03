@@ -1,40 +1,39 @@
 import { ExpTrustBadge } from "@/components/brand/ExpTrustBadge";
+import type { ContactCopy } from "@/content/site-copy";
 
-export function ContactSection() {
+type ContactSectionProps = {
+  copy: ContactCopy;
+};
+
+export function ContactSection({ copy }: ContactSectionProps) {
   return (
     <section id="contacto" className="pe-section">
       <div className="pe-container pe-split-grid" style={{ gap: "2rem" }}>
         <div>
-          <p className="pe-eyebrow">Contacto</p>
+          <p className="pe-eyebrow">{copy.eyebrow}</p>
           <h2 className="pe-section-title" style={{ marginTop: "1rem" }}>
-            Abramos una conversación privada.
+            {copy.title}
           </h2>
-          <p className="pe-section-copy" style={{ marginTop: "1.25rem" }}>
-            Si estás valorando vender, invertir o explorar una oportunidad patrimonial en Palma o el suroeste de Mallorca, podemos estudiar tu caso con criterio, confidencialidad y enfoque premium.
-          </p>
+          <p className="pe-section-copy" style={{ marginTop: "1.25rem" }}>{copy.body}</p>
           <div style={{ marginTop: "1rem" }}>
-            <ExpTrustBadge mode="card" />
+            <ExpTrustBadge mode="card" text={copy.trustBadgeText} />
           </div>
         </div>
         <div className="pe-card" style={{ padding: "1.75rem" }}>
-          <p className="pe-eyebrow">Contact details</p>
+          <p className="pe-eyebrow">{copy.detailsTitle}</p>
           <div style={{ display: "grid", gap: "1rem", marginTop: "1rem" }}>
-            <div>
-              <div className="pe-eyebrow">Email</div>
-              <a href="mailto:contacto@anclora.com" style={{ fontFamily: "var(--pe-font-display)", fontSize: "1.8rem" }}>
-                contacto@anclora.com
-              </a>
-            </div>
-            <div>
-              <div className="pe-eyebrow">Teléfono</div>
-              <a href="tel:+34000000000" style={{ fontFamily: "var(--pe-font-display)", fontSize: "1.8rem" }}>
-                +34 000 000 000
-              </a>
-            </div>
-            <div>
-              <div className="pe-eyebrow">Ubicación</div>
-              <p style={{ color: "var(--pe-text-soft)", lineHeight: 1.8 }}>Palma de Mallorca · Islas Baleares</p>
-            </div>
+            {copy.details.map((detail) => (
+              <div key={detail.label}>
+                <div className="pe-eyebrow">{detail.label}</div>
+                {detail.href ? (
+                  <a href={detail.href} style={{ fontFamily: "var(--pe-font-display)", fontSize: "1.8rem" }}>
+                    {detail.value}
+                  </a>
+                ) : (
+                  <p style={{ color: "var(--pe-text-soft)", lineHeight: 1.8 }}>{detail.value}</p>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
