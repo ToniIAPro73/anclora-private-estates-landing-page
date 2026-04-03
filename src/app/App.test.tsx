@@ -21,7 +21,7 @@ describe("App landing home", () => {
       }),
     ).toBeInTheDocument();
 
-    const navigation = screen.getByRole("navigation");
+    const navigation = screen.getByRole("navigation", { name: siteCopyByLanguage.es.navbar.navAriaLabel });
     for (const link of siteCopyByLanguage.es.navbar.links) {
       expect(within(navigation).getByRole("link", { name: link.label })).toBeInTheDocument();
     }
@@ -82,6 +82,8 @@ describe("App landing home", () => {
     expect(window.localStorage.getItem("ape:language")).toBe("en");
     expect(screen.getByRole("heading", { level: 1, name: siteCopyByLanguage.en.hero.title })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: siteCopyByLanguage.en.hero.primaryCta })).toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: siteCopyByLanguage.en.navbar.navAriaLabel })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: siteCopyByLanguage.en.contact.title })).toBeInTheDocument();
     expect(screen.queryByRole("heading", { level: 1, name: siteCopyByLanguage.es.hero.title })).not.toBeInTheDocument();
 
     await user.click(germanButton);
@@ -91,6 +93,8 @@ describe("App landing home", () => {
     expect(window.localStorage.getItem("ape:language")).toBe("de");
     expect(screen.getByRole("heading", { level: 1, name: siteCopyByLanguage.de.hero.title })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: siteCopyByLanguage.de.hero.primaryCta })).toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: siteCopyByLanguage.de.navbar.navAriaLabel })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: siteCopyByLanguage.de.contact.title })).toBeInTheDocument();
     expect(screen.queryByRole("heading", { level: 1, name: siteCopyByLanguage.en.hero.title })).not.toBeInTheDocument();
   });
 });

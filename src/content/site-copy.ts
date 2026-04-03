@@ -147,6 +147,7 @@ export type LanguageSwitcherCopy = {
 };
 
 export type NavbarCopy = {
+  navAriaLabel: string;
   links: NavLinkCopy[];
   ctaLabel: string;
   languageSwitcher: LanguageSwitcherCopy;
@@ -168,6 +169,7 @@ export type SiteCopy = {
 
 const siteCopyEs: SiteCopy = {
   navbar: {
+    navAriaLabel: "Principal",
     links: [
       { label: "Mallorca", href: "#mallorca-focus" },
       { label: "Inversores", href: "#inversores" },
@@ -402,6 +404,7 @@ const siteCopyEn: SiteCopy = {
   ...siteCopyEs,
   navbar: {
     ...siteCopyEs.navbar,
+    navAriaLabel: "Main",
     links: [
       { label: "Mallorca", href: "#mallorca-focus" },
       { label: "Investors", href: "#inversores" },
@@ -647,6 +650,7 @@ const siteCopyDe: SiteCopy = {
   ...siteCopyEs,
   navbar: {
     ...siteCopyEs.navbar,
+    navAriaLabel: "Hauptnavigation",
     links: [
       { label: "Mallorca", href: "#mallorca-focus" },
       { label: "Investoren", href: "#inversores" },

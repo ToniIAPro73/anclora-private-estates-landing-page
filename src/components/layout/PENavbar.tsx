@@ -11,29 +11,11 @@ type PENavbarProps = {
 export function PENavbar({ copy, language, onLanguageChange }: PENavbarProps) {
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 20, padding: "1rem 0 0" }}>
-      <nav aria-label="Principal" className="pe-container pe-glass" style={{ borderRadius: "999px", padding: "0.9rem 1.1rem" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "auto 1fr auto",
-            gap: "1rem",
-            alignItems: "center",
-          }}
-        >
+      <nav aria-label={copy.navAriaLabel} className="pe-container pe-glass pe-nav-shell">
+        <div className="pe-nav-inner">
           <BrandLockup variant="full-exp" />
 
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              gap: "1.1rem",
-              fontSize: "0.82rem",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              color: "var(--pe-text-soft)",
-            }}
-          >
+          <div className="pe-nav-links">
             {copy.links.map((link) => (
               <a key={link.href} href={link.href}>
                 {link.label}
@@ -41,7 +23,7 @@ export function PENavbar({ copy, language, onLanguageChange }: PENavbarProps) {
             ))}
           </div>
 
-          <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", justifySelf: "end" }}>
+          <div className="pe-nav-actions">
             <LanguageSwitcher copy={copy.languageSwitcher} language={language} onLanguageChange={onLanguageChange} />
             <a className="pe-btn-primary" href="#propietarios" style={{ minHeight: "46px" }}>
               {copy.ctaLabel}

@@ -88,31 +88,6 @@ export function HeroSection({ copy, trustBadgeText }: HeroSectionProps) {
               </div>
             </div>
 
-            <div className="pe-dual-panel" style={{ gap: "1rem", marginTop: "auto" }}>
-              <div
-                style={{
-                  background: "color-mix(in srgb, var(--pe-deep-surface) 72%, white 8%)",
-                  borderRadius: "1.6rem",
-                  padding: "1.35rem",
-                }}
-              >
-                <p className="pe-eyebrow" style={{ color: "var(--pe-deep-muted)", margin: 0 }}>
-                  {copy.media.methodEyebrow}
-                </p>
-                <p style={{ color: "var(--pe-deep-text)", lineHeight: 1.75, margin: "0.65rem 0 0" }}>
-                  {copy.media.method}
-                </p>
-              </div>
-
-              <div style={{ display: "grid", gap: "0.75rem", alignContent: "start" }}>
-                <div style={{ color: "var(--pe-gold)", fontFamily: "var(--pe-font-display)", fontSize: "2.3rem" }}>
-                  {copy.media.statValue}
-                </div>
-                <p style={{ color: "var(--pe-deep-muted)", lineHeight: 1.75, margin: 0 }}>
-                  {copy.media.statCopy}
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
