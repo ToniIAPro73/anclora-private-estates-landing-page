@@ -1,6 +1,6 @@
 ---
 frontend:
-  - task: "Hero Section Overlay - Second Curation (Balanced, Quiet Luxury, Medium Contrast)"
+  - task: "Hero Section Overlay - Más Atelier Adjustment"
     implemented: true
     working: true
     file: "src/styles/private-estates-helpers.css"
@@ -11,15 +11,18 @@ frontend:
       - working: true
         agent: "testing"
         comment: "✓ Validated hero overlay implementation. Desktop & mobile tested. Text fully legible (16.77:1 contrast ratio, exceeds WCAG AA). Overlay refined with avg opacity 0.329 (range 0.08-0.64), creating balanced medium contrast. Cards use backdrop-filter blur(18px) with subtle gold borders (rgba 0.12) for quiet luxury aesthetic. No critical contrast loss detected."
+      - working: true
+        agent: "testing"
+        comment: "✓ Validated 'más atelier' adjustment. Desktop (1920x1080) & mobile (390x844) tested. Cards are highly discrete: backdrop-filter blur(14px), background 62% transparent, gold border 0.08 opacity, shadow 0.22 opacity. Right block visual weight reduced - cards blend subtly into composition. Composition achieves silent/exclusive feel with refined frosted glass effect. Text remains fully legible (hero title: 115.2px, rgb(245,245,240)). Balance maintained across viewports. No critical issues."
 
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 1
+  test_sequence: 2
 
 test_plan:
   current_focus:
-    - "Hero Section Overlay - Second Curation (Balanced, Quiet Luxury, Medium Contrast)"
+    - "Hero Section Overlay - Más Atelier Adjustment"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
@@ -27,4 +30,6 @@ test_plan:
 agent_communication:
   - agent: "testing"
     message: "Hero section overlay validation complete. All criteria met: (1) Text fully legible with excellent 16.77:1 contrast ratio, (2) Overlay appears refined with average opacity 0.329 and balanced gradient (0.08-0.64 range), (3) No critical contrast loss - cards maintain readability with backdrop blur and subtle styling. Implementation aligns with 'balanced, quiet luxury, medium contrast' direction."
+  - agent: "testing"
+    message: "'Más atelier' adjustment validated successfully. Three validation criteria confirmed: (1) Readability maintained - hero title clearly visible at 115.2px with high contrast, all text elements legible on both desktop and mobile. (2) Cards now highly discrete - 62% transparent background, 0.08 opacity gold borders, 14px backdrop blur creates subtle frosted glass effect that blends into composition rather than dominating. (3) Composition feels more silent/exclusive - reduced visual weight on right block achieved through subtle card styling, refined color palette (dark teal/green), and understated luxury aesthetic. Balance preserved across desktop and mobile viewports. Screenshots captured for visual confirmation."
 ---
