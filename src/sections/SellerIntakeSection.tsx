@@ -9,18 +9,31 @@ type SellerIntakeSectionProps = {
 export function SellerIntakeSection({ copy }: SellerIntakeSectionProps) {
   return (
     <section id="propietarios" className="pe-section">
-      <div className="pe-container pe-split-grid" style={{ gap: "2rem" }}>
-        <div>
+      <div className="pe-container pe-dual-panel pe-owner-shell">
+        <div className="pe-owner-copy">
           <p className="pe-eyebrow">{copy.eyebrow}</p>
           <h2 className="pe-section-title" style={{ marginTop: "1rem" }}>
             {copy.title}
           </h2>
-          <p className="pe-section-copy" style={{ marginTop: "1.25rem" }}>{copy.body}</p>
+          <p className="pe-section-copy" style={{ marginTop: "1.25rem" }}>
+            {copy.body}
+          </p>
+
+          <div className="pe-owner-checklist" data-testid="owner-checklist">
+            <span className="pe-eyebrow pe-kicker">{copy.checklistLabel}</span>
+            <ul>
+              {copy.checklist.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
           <div style={{ marginTop: "1rem" }}>
             <ExpTrustBadge mode="card" text={copy.trustBadgeText} />
           </div>
         </div>
-        <div className="pe-card" style={{ padding: "1.5rem" }}>
+
+        <div className="pe-card pe-owner-form-card" data-testid="seller-form-card">
           <SellerIntakeForm copy={copy.form} />
         </div>
       </div>

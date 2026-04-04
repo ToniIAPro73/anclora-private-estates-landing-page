@@ -7,40 +7,37 @@ type DataLabSignalsSectionProps = {
 export function DataLabSignalsSection({ copy }: DataLabSignalsSectionProps) {
   return (
     <section id="data-lab" className="pe-section pe-section-soft">
-      <div className="pe-container">
-        <div className="pe-section-heading">
-          <p className="pe-eyebrow">{copy.eyebrow}</p>
-          <h2 className="pe-section-title">{copy.title}</h2>
+      <div className="pe-container pe-stack" style={{ gap: "2.5rem" }}>
+        <div className="pe-section-heading pe-section-heading--split">
+          <div>
+            <p className="pe-eyebrow">{copy.eyebrow}</p>
+            <h2 className="pe-section-title">{copy.title}</h2>
+          </div>
+          <p className="pe-section-copy pe-section-copy--narrow" style={{ margin: 0 }}>
+            {copy.intro}
+          </p>
         </div>
-        <div className="pe-grid-feature" style={{ marginTop: "2rem" }}>
-          <article className="pe-card-deep" style={{ padding: "1.75rem" }}>
+
+        <div className="pe-grid-feature pe-datalab-grid">
+          <article className="pe-card-deep pe-datalab-lead" data-testid="datalab-lead-card">
+            <div className="pe-datalab-lead__ornament" aria-hidden="true" />
             <p className="pe-eyebrow" style={{ color: "var(--pe-deep-muted)" }}>
               {copy.lead.eyebrow}
             </p>
-            <h3 style={{ fontFamily: "var(--pe-font-display)", fontSize: "2rem", marginTop: "0.75rem" }}>
-              {copy.lead.title}
-            </h3>
+            <h3 className="pe-datalab-lead__title">{copy.lead.title}</h3>
             {copy.lead.body ? (
-              <p
-                style={{
-                  color: "var(--pe-deep-muted)",
-                  lineHeight: 1.85,
-                  fontFamily: "var(--pe-font-accent)",
-                  fontStyle: "italic",
-                  fontSize: "1.05rem",
-                }}
-              >
-                {copy.lead.body}
-              </p>
+              <p className="pe-datalab-lead__body">{copy.lead.body}</p>
             ) : null}
           </article>
-          <div style={{ display: "grid", gap: "1rem" }}>
-            {copy.signals.map((signal) => (
-              <article key={signal.eyebrow} className="pe-card pe-offset-card" style={{ padding: "1.5rem" }}>
-                <p className="pe-eyebrow" style={{ color: "var(--pe-gold)" }}>{signal.eyebrow}</p>
-                <h3 style={{ fontFamily: "var(--pe-font-display)", fontSize: "1.8rem", marginTop: "0.75rem", marginBottom: 0 }}>
-                  {signal.title}
-                </h3>
+
+          <div className="pe-stack" style={{ gap: "1rem" }}>
+            {copy.signals.map((signal, index) => (
+              <article key={signal.eyebrow} className="pe-card pe-offset-card pe-datalab-card" data-testid={`datalab-card-${index + 1}`}>
+                <p className="pe-eyebrow" style={{ color: "var(--pe-gold)", marginBottom: "0.75rem" }}>
+                  {signal.eyebrow}
+                </p>
+                <h3 className="pe-datalab-card__title">{signal.title}</h3>
+                {signal.body ? <p className="pe-section-copy" style={{ margin: 0 }}>{signal.body}</p> : null}
               </article>
             ))}
           </div>

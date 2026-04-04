@@ -8,7 +8,7 @@ type LanguageSwitcherProps = {
 
 export function LanguageSwitcher({ copy, language, onLanguageChange }: LanguageSwitcherProps) {
   return (
-    <div className="pe-lang-switcher" role="group" aria-label={copy.groupLabel}>
+    <div className="pe-lang-switcher" role="group" aria-label={copy.groupLabel} data-testid="language-switcher">
       {copy.options.map((entry) => (
         <button
           key={entry.code}
@@ -16,6 +16,7 @@ export function LanguageSwitcher({ copy, language, onLanguageChange }: LanguageS
           className={`pe-lang-btn ${language === entry.code ? "is-active" : ""}`}
           aria-label={entry.ariaLabel}
           aria-pressed={language === entry.code}
+          data-testid={`language-button-${entry.code}`}
           onClick={() => onLanguageChange(entry.code)}
         >
           {entry.label}

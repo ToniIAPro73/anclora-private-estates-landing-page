@@ -10,12 +10,12 @@ type PENavbarProps = {
 
 export function PENavbar({ copy, language, onLanguageChange }: PENavbarProps) {
   return (
-    <header style={{ position: "sticky", top: 0, zIndex: 20, padding: "1rem 0 0" }}>
+    <header className="pe-navbar" data-testid="site-navbar">
       <nav aria-label={copy.navAriaLabel} className="pe-container pe-glass pe-nav-shell">
         <div className="pe-nav-inner">
           <BrandLockup variant="full-exp" />
 
-          <div className="pe-nav-links">
+          <div className="pe-nav-links" data-testid="navbar-links">
             {copy.links.map((link) => (
               <a key={link.href} href={link.href}>
                 {link.label}
@@ -25,7 +25,7 @@ export function PENavbar({ copy, language, onLanguageChange }: PENavbarProps) {
 
           <div className="pe-nav-actions">
             <LanguageSwitcher copy={copy.languageSwitcher} language={language} onLanguageChange={onLanguageChange} />
-            <a className="pe-btn-primary" href="#propietarios" style={{ minHeight: "46px" }}>
+            <a className="pe-btn-primary" href="#propietarios" style={{ minHeight: "46px" }} data-testid="navbar-primary-cta">
               {copy.ctaLabel}
             </a>
           </div>

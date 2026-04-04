@@ -6,87 +6,53 @@ type MallorcaFocusSectionProps = {
 
 export function MallorcaFocusSection({ copy }: MallorcaFocusSectionProps) {
   return (
-    <section id="mallorca-focus" className="pe-section">
-      {/* Scenic photo banner — Mallorca coastline */}
-      <div
-        style={{
-          width: "100%",
-          height: "clamp(14rem, 28vw, 22rem)",
-          position: "relative",
-          overflow: "hidden",
-          marginBottom: "3rem",
-        }}
-      >
-        <img
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&h=600&q=80&auto=format&fit=crop"
-          alt="Costa premium del suroeste de Mallorca"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 60%" }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(90deg, rgba(7,37,47,0.84) 0%, rgba(7,37,47,0.40) 50%, rgba(7,37,47,0.84) 100%), linear-gradient(180deg, rgba(7,37,47,0.24) 0%, rgba(7,37,47,0.70) 100%)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            alignItems: "center",
-            padding: "0 clamp(1.5rem, 5vw, 5rem)",
-          }}
-        >
-          <div>
-            <p className="pe-eyebrow" style={{ color: "var(--pe-gold)", margin: "0 0 0.75rem" }}>{copy.eyebrow}</p>
-            <h2
-              style={{
-                fontFamily: "var(--pe-font-display)",
-                fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                color: "var(--pe-deep-text)",
-                margin: 0,
-                letterSpacing: "-0.03em",
-                lineHeight: 0.98,
-                maxWidth: "22ch",
-              }}
-            >
-              {copy.title}
-            </h2>
-          </div>
-        </div>
+    <section id="mallorca-focus" className="pe-section pe-section-territory">
+      <div className="pe-territory-band" aria-hidden="true">
+        <div className="pe-territory-band__glow pe-territory-band__glow--gold" />
+        <div className="pe-territory-band__glow pe-territory-band__glow--teal" />
+        <div className="pe-territory-band__grid" />
+        <div className="pe-territory-band__line pe-territory-band__line--one" />
+        <div className="pe-territory-band__line pe-territory-band__line--two" />
+        <div className="pe-territory-band__line pe-territory-band__line--three" />
       </div>
 
-      <div className="pe-container">
-        <div style={{ display: "grid", gap: "1.5rem" }}>
+      <div className="pe-container pe-stack" style={{ gap: "2.5rem" }}>
+        <div className="pe-section-heading pe-section-heading--split">
+          <div>
+            <p className="pe-eyebrow pe-kicker">{copy.eyebrow}</p>
+            <h2 className="pe-section-title">{copy.title}</h2>
+          </div>
+          <p className="pe-section-copy pe-section-copy--narrow" style={{ margin: 0 }}>
+            {copy.intro}
+          </p>
+        </div>
+
+        <div className="pe-stack" style={{ gap: "1.5rem" }}>
           {copy.clusters.map((cluster, index) => (
             <article
               key={cluster.id}
-              className={`${index === 0 ? "pe-card-deep" : "pe-card"} pe-microzone-card`}
-              style={{ padding: "1.75rem", gap: "1rem" }}
+              className={`${index === 0 ? "pe-card-deep" : "pe-card"} pe-microzone-card pe-microzone-card--editorial`}
+              data-testid={`mallorca-cluster-${cluster.id}`}
             >
-              <div>
+              <div className="pe-microzone-card__meta">
                 <p className="pe-eyebrow" style={{ color: index === 0 ? "var(--pe-deep-muted)" : "var(--pe-text-muted)" }}>
                   {cluster.eyebrow}
                 </p>
-                <h3
-                  className="pe-card-gold-title"
-                  style={{ fontFamily: "var(--pe-font-display)", fontSize: "2rem", margin: "0.75rem 0 0" }}
-                >
-                  {cluster.title}
-                </h3>
+                <h3 className="pe-microzone-card__title">{cluster.title}</h3>
+                <div className="pe-microzone-card__areas">
+                  <strong>{copy.areasLabel}</strong>
+                  <span>{cluster.areas.join(" · ")}</span>
+                </div>
               </div>
-              <div>
-                <p style={{ color: index === 0 ? "var(--pe-deep-muted)" : "var(--pe-text-soft)", lineHeight: 1.85 }}>
+
+              <div className="pe-stack" style={{ gap: "1rem" }}>
+                <p style={{ color: index === 0 ? "var(--pe-deep-muted)" : "var(--pe-text-soft)", lineHeight: 1.9, margin: 0 }}>
                   {cluster.body}
                 </p>
-                <p style={{ marginTop: "1rem", color: index === 0 ? "var(--pe-deep-text)" : "var(--pe-text)" }}>
-                  <strong>{copy.areasLabel}:</strong> {cluster.areas.join(" · ")}
-                </p>
-                <p style={{ marginTop: "0.75rem", color: index === 0 ? "var(--pe-deep-muted)" : "var(--pe-text-soft)" }}>
-                  <strong>{cluster.audienceLabel}:</strong> {cluster.audience}
-                </p>
+                <div className="pe-microzone-card__audience">
+                  <span>{cluster.audienceLabel}</span>
+                  <p style={{ margin: 0 }}>{cluster.audience}</p>
+                </div>
               </div>
             </article>
           ))}
