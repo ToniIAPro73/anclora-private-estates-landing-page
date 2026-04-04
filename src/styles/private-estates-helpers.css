@@ -275,16 +275,17 @@
 
 .pe-photo-window__overlay--hero {
   background:
-    linear-gradient(90deg, rgba(6, 18, 24, 0.78) 0%, rgba(6, 18, 24, 0.44) 36%, rgba(6, 18, 24, 0.24) 58%, rgba(6, 18, 24, 0.62) 100%),
-    linear-gradient(180deg, rgba(6, 18, 24, 0.16) 0%, rgba(6, 18, 24, 0.28) 42%, rgba(6, 18, 24, 0.74) 100%);
+    linear-gradient(90deg, rgba(7, 22, 28, 0.64) 0%, rgba(7, 22, 28, 0.34) 34%, rgba(7, 22, 28, 0.16) 58%, rgba(7, 22, 28, 0.44) 100%),
+    linear-gradient(180deg, rgba(7, 22, 28, 0.08) 0%, rgba(7, 22, 28, 0.18) 36%, rgba(7, 22, 28, 0.46) 100%);
 }
 
 .pe-photo-window__ambient {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 18% 18%, rgba(212, 175, 55, 0.14), transparent 24%),
-    radial-gradient(circle at 82% 12%, rgba(58, 160, 144, 0.1), transparent 20%);
+    radial-gradient(circle at 18% 18%, rgba(212, 175, 55, 0.08), transparent 22%),
+    radial-gradient(circle at 82% 14%, rgba(58, 160, 144, 0.08), transparent 18%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 28%, rgba(7, 22, 28, 0.08) 100%);
 }
 
 .pe-photo-window__content {
