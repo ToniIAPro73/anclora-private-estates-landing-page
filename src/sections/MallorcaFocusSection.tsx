@@ -1,5 +1,8 @@
 import type { MallorcaFocusCopy } from "@/content/site-copy";
 
+const MALLORCA_FOCUS_IMAGE =
+  "https://customer-assets.emergentagent.com/job_luxury-landing-hub/artifacts/bllgrtju_Mallorca_focus_v5.png";
+
 type MallorcaFocusSectionProps = {
   copy: MallorcaFocusCopy;
 };
@@ -7,13 +10,19 @@ type MallorcaFocusSectionProps = {
 export function MallorcaFocusSection({ copy }: MallorcaFocusSectionProps) {
   return (
     <section id="mallorca-focus" className="pe-section pe-section-territory">
-      <div className="pe-territory-band" aria-hidden="true">
+      <div className="pe-territory-band">
+        <img className="pe-territory-band__image" src={MALLORCA_FOCUS_IMAGE} alt="Costa de Mallorca con aguas turquesa y embarcación en cala privada" />
+        <div className="pe-territory-band__photo-overlay" />
         <div className="pe-territory-band__glow pe-territory-band__glow--gold" />
         <div className="pe-territory-band__glow pe-territory-band__glow--teal" />
         <div className="pe-territory-band__grid" />
         <div className="pe-territory-band__line pe-territory-band__line--one" />
         <div className="pe-territory-band__line pe-territory-band__line--two" />
         <div className="pe-territory-band__line pe-territory-band__line--three" />
+        <div className="pe-territory-band__content">
+          <p className="pe-eyebrow pe-kicker" style={{ margin: 0 }}>{copy.eyebrow}</p>
+          <h2 className="pe-territory-band__title">{copy.title}</h2>
+        </div>
       </div>
 
       <div className="pe-container pe-stack" style={{ gap: "2.5rem" }}>

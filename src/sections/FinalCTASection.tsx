@@ -1,5 +1,8 @@
 import type { FinalCtaCopy } from "@/content/site-copy";
 
+const FINAL_CTA_IMAGE =
+  "https://customer-assets.emergentagent.com/job_luxury-landing-hub/artifacts/08qv4ckf_CTA_v1.png";
+
 type FinalCTASectionProps = {
   copy: FinalCtaCopy;
 };
@@ -8,6 +11,8 @@ export function FinalCTASection({ copy }: FinalCTASectionProps) {
   return (
     <section className="pe-section pe-final-cta-section">
       <div className="pe-final-cta-background" aria-hidden="true">
+        <img className="pe-final-cta-background__image" src={FINAL_CTA_IMAGE} alt="Villa de lujo en Mallorca como fondo de cierre comercial" />
+        <div className="pe-final-cta-background__image-overlay" />
         <div className="pe-final-cta-background__glow pe-final-cta-background__glow--gold" />
         <div className="pe-final-cta-background__glow pe-final-cta-background__glow--teal" />
         <div className="pe-final-cta-background__grid" />

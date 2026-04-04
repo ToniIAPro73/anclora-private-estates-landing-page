@@ -1,6 +1,9 @@
 import { ExpTrustBadge } from "@/components/brand/ExpTrustBadge";
 import type { HeroCopy } from "@/content/site-copy";
 
+const HERO_IMAGE =
+  "https://customer-assets.emergentagent.com/job_luxury-landing-hub/artifacts/x5r4drpo_Hero_v2.png";
+
 type HeroSectionProps = {
   copy: HeroCopy;
   trustBadgeText: string;
@@ -53,45 +56,30 @@ export function HeroSection({ copy, trustBadgeText }: HeroSectionProps) {
           <ExpTrustBadge text={trustBadgeText} />
         </div>
 
-        <div className="pe-hero-visual pe-editorial-window" data-testid="hero-editorial-visual">
-          <div className="pe-editorial-window__frame">
-            <div className="pe-editorial-window__topline">
-              <span>Private Estates</span>
-              <span>Mallorca · Editorial Selection</span>
+        <div className="pe-hero-visual pe-photo-window" data-testid="hero-editorial-visual">
+          <img className="pe-photo-window__image pe-photo-window__image--hero" src={HERO_IMAGE} alt="Villa contemporánea en Mallorca con piscina e vistas al mar" />
+          <div className="pe-photo-window__overlay pe-photo-window__overlay--hero" />
+          <div className="pe-photo-window__ambient" aria-hidden="true" />
+
+          <div className="pe-photo-window__content">
+            <div className="pe-stack" style={{ gap: "0.75rem", maxWidth: "18rem" }}>
+              <p className="pe-eyebrow" style={{ margin: 0, color: "rgba(247,244,238,0.86)" }}>
+                {copy.media.eyebrow}
+              </p>
+              <div className="pe-photo-window__headline">{copy.media.title}</div>
             </div>
 
-            <div className="pe-editorial-window__plan" aria-hidden="true">
-              <span className="pe-editorial-window__grid pe-editorial-window__grid--a" />
-              <span className="pe-editorial-window__grid pe-editorial-window__grid--b" />
-              <span className="pe-editorial-window__grid pe-editorial-window__grid--c" />
-              <span className="pe-editorial-window__pool" />
-              <span className="pe-editorial-window__mass pe-editorial-window__mass--one" />
-              <span className="pe-editorial-window__mass pe-editorial-window__mass--two" />
-              <span className="pe-editorial-window__mass pe-editorial-window__mass--three" />
-              <span className="pe-editorial-window__glow pe-editorial-window__glow--gold" />
-              <span className="pe-editorial-window__glow pe-editorial-window__glow--teal" />
-            </div>
-
-            <div className="pe-editorial-window__content">
-              <div className="pe-stack" style={{ gap: "0.75rem", maxWidth: "18rem" }}>
-                <p className="pe-eyebrow" style={{ margin: 0, color: "var(--pe-deep-muted)" }}>
-                  {copy.media.eyebrow}
+            <div className="pe-photo-window__cards">
+              <article className="pe-photo-window__card pe-photo-window__card--offset">
+                <p className="pe-eyebrow" style={{ margin: 0, color: "rgba(247,244,238,0.72)" }}>
+                  {copy.media.methodEyebrow}
                 </p>
-                <div className="pe-editorial-window__headline">{copy.media.title}</div>
-              </div>
-
-              <div className="pe-editorial-window__cards">
-                <article className="pe-editorial-window__card pe-editorial-window__card--offset">
-                  <p className="pe-eyebrow" style={{ margin: 0, color: "var(--pe-deep-muted)" }}>
-                    {copy.media.methodEyebrow}
-                  </p>
-                  <p style={{ margin: 0, color: "var(--pe-deep-text)", lineHeight: 1.7 }}>{copy.media.method}</p>
-                </article>
-                <article className="pe-editorial-window__card pe-editorial-window__card--stat">
-                  <span className="pe-editorial-window__stat">{copy.media.statValue}</span>
-                  <p style={{ margin: 0, color: "var(--pe-deep-muted)", lineHeight: 1.7 }}>{copy.media.statCopy}</p>
-                </article>
-              </div>
+                <p style={{ margin: 0, color: "var(--pe-deep-text)", lineHeight: 1.7 }}>{copy.media.method}</p>
+              </article>
+              <article className="pe-photo-window__card pe-photo-window__card--stat">
+                <span className="pe-photo-window__stat">{copy.media.statValue}</span>
+                <p style={{ margin: 0, color: "rgba(247,244,238,0.76)", lineHeight: 1.7 }}>{copy.media.statCopy}</p>
+              </article>
             </div>
           </div>
         </div>
